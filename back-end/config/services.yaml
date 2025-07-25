@@ -1,0 +1,18 @@
+# config/services.yaml
+parameters: ~
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Security\UserProvider:
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
